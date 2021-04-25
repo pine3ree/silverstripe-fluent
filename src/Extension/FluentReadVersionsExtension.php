@@ -37,7 +37,7 @@ class FluentReadVersionsExtension extends Extension
         $locale = FluentState::singleton()->getLocale();
 
         $query = $list->dataQuery();
-        $query->having(['"SourceLocale" = ?' => $locale]);
+        $query->having(['"SourceLocale" = ' . Convert::raw2sql($locale, true)]);
 
         $list = $list->setDataQuery($query);
     }
